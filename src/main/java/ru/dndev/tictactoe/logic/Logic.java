@@ -25,7 +25,6 @@ public class Logic {
     }
 
     public void play() {
-        boolean flag = true;
         System.out.println("Введите свое имя, и введите символ которым хотите играть");
         Player player = new Player(input.inputStr(), input.inputStr());
         System.out.println("Введите символ для бота которым он будет играть");
@@ -35,8 +34,16 @@ public class Logic {
             game.printTable();
             System.out.println("Введите координаты черел пробел");
             game.moveHuman(player);
+            if (game.checkWinner(table, player.getField())) {
+                output.output("Победил " + player);
+                game.printTable();
+                break;
+            }
             game.moveBot(botPLayer);
-        } while (flag);
-
+            if (game.checkWinner(table, botPLayer.getBotField())) {
+                output.output("Победил " + botPLayer);
+                break;
+            }
+        } while (true);
     }
 }

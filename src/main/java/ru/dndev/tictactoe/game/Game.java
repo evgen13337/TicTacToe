@@ -81,4 +81,51 @@ public class Game {
             }
         } while (flag);
     }
+
+    public boolean checkWinner(Table table, String field) {
+        int row = 0;
+        int colum = 0;
+        int diagonal = 0;
+        int diagonalReverse = 0;
+        int count = table.getTableSize();
+        for (int i = 0; i < table.getTable().length; i++) {
+            for (int j = 0; j < table.getTable().length; j++) {
+                if (Objects.equals(table.getTable()[i][j], field)) {
+                    row++;
+                }
+                if (Objects.equals(table.getTable()[j][i], field)) {
+                    colum++;
+                }
+                if (colum == count || row == count) {
+                    return true;
+                }
+            }
+            colum = 0;
+            row = 0;
+        }
+        for (int i = 0; i < table.getTable().length; i++) {
+            if (Objects.equals(table.getTable()[i][i], field)) {
+                diagonal++;
+            }
+            if (Objects.equals(table.getTable()[table.getTable().length - 1 - i][i], field)) {
+                diagonalReverse++;
+            }
+            if (diagonal == count || diagonalReverse == count) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean draw(Table table) {
+        for (int i = 0; i < table.getTable().length; i++) {
+            for (int j = 0; j < table.getTable().length; j++) {
+                if (Objects.equals(table.getTable()[i][j], table.getEmptyField())) {
+                    return true;
+                }
+            }
+        }
+        System.out.println("Ничья, победила дружба :)");
+        return false;
+    }
 }
