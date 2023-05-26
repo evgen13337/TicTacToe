@@ -3,7 +3,7 @@ package ru.dndev.tictactoe.actions;
 import ru.dndev.tictactoe.model.Table;
 import ru.dndev.tictactoe.output.Output;
 
-public class Play implements  Action {
+public class Play implements Action {
     private final Output output;
 
     public Play(Output output) {
@@ -17,7 +17,6 @@ public class Play implements  Action {
 
     @Override
     public boolean execute(Table table) {
-        output.output("Игра началась первым ходит Х");
         return true;
     }
 }

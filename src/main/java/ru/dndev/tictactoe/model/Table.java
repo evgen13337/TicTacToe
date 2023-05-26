@@ -3,38 +3,28 @@ package ru.dndev.tictactoe.model;
 public class Table {
 
     private final int tableSize;
-    private final char emptyField;
-    private final char fieldX = 'X';
-    private final char fieldO = 'O';
-    private char[][] table;
+    private final String emptyField;
+    private String[][] table;
 
-    public Table(int tableSize, char emptyField) {
+    public Table(int tableSize, String emptyField) {
         this.tableSize = tableSize;
         this.emptyField = emptyField;
-        this.table = new char[tableSize][tableSize];
+        this.table = new String[tableSize][tableSize];
     }
 
     public int getTableSize() {
         return tableSize;
     }
 
-    public char getEmptyField() {
+    public String getEmptyField() {
         return emptyField;
     }
 
-    public char[][] getTable() {
+    public String[][] getTable() {
         return table;
     }
 
-    public char getFieldX() {
-        return fieldX;
-    }
-
-    public char getFieldO() {
-        return fieldO;
-    }
-
-    public void setTable(char[][] table) {
+    public void setTable(String[][] table) {
         this.table = table;
     }
 }
